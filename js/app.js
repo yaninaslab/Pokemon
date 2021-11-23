@@ -30,8 +30,25 @@ function add_cards_item(item) {
     
     }
 
+   // function store_pokemon_cookie(pokemon_json) {
+   //     Cookies.set("selected_pokemon", pokemon_json);
+
+   // }
+
     function store_pokemon_cookie(pokemon_json) {
         Cookies.set("selected_pokemon", pokemon_json);
+        var user_pokemon = JSON.parse(pokemon_json);
+        var game_state = {
+            user_max_health: 50,
+            user_current_health: 50,
+            computer_max_health: 40,
+            computer_current_health: 40,
+            user_selection: user_pokemon,
+            computer_selection: user_pokemon[2],
+        }
+        game_state_json = JSON.stringify(game_state);
+        Cookies.set("game_state", game_state_json);
+        window.location = "/pages/battle.html";
 
     }
 
@@ -39,21 +56,21 @@ function add_cards_item(item) {
 var pok_items = [
     {
         name: "Pikachu",
-        description: "Quick Attack",
+        description: "Mouse",
         image_src: "../images/1.jpg",
         hit_points: 30
     },
     {
-        name: "Oshawott",
-        description: "Water Gun",
+        name: "Buneary",
+        description: "Rabbit",
         image_src: "../images/2.jpg",
         hit_points: 35
     },
     {
-        name: "Tepig",
-        description: "Ember",
+        name: "Pachirisu",
+        description: "EEleSquirrel",
         image_src: "../images/3.jpg",
-        hit_points: 30
+        hit_points: 40
     },
 ]
 
